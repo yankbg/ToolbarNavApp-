@@ -242,7 +242,7 @@
                         android:layout_below="@id/airplane"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="Airplan"
+                        android:text="Airplane"
                         android:textSize="24sp"
                         app:fontFamily="sans-serif" />
                     <ImageView
