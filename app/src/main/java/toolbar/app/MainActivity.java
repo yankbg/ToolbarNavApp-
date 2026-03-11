@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -31,6 +32,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setSupportActionBar(toolbar);
 
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.nav_logout).setVisible(false);
+        menu.findItem(R.id.nav_profile).setVisible(false);
+
+        // to make sure the navigation view is on top of the main content
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -38,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        navigationView.setCheckedItem(R.id.nav_home);
     }
 
     @Override
@@ -64,7 +72,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_share:
                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
                 break;
-
+            case R.id.nav_taxi:
+                Toast.makeText(this, "Taxi", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_rate:
+                Toast.makeText(this, "Rate", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_plane:
+                Toast.makeText(this, "Plane", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_login:
+                Intent intent1 = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent1);
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
 

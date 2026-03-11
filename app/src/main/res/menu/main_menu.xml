@@ -13,11 +13,11 @@
             android:title="Taxi" />
         <item
             android:id="@+id/nav_bus"
-            android:icon="@drawable/home_icon"
+            android:icon="@drawable/icons8_bus_500"
             android:title="Bus" />
         <item
             android:id="@+id/nav_plane"
-            android:icon="@drawable/home_icon"
+            android:icon="@drawable/icons8_plan_500"
             android:title="Plane" />
 
     </group>
@@ -32,7 +32,7 @@
                     <item
                         android:id="@+id/nav_login"
                         android:icon="@drawable/login_icon"
-                        android:title="Home" />
+                        android:title="login" />
                     <item
                         android:id="@+id/nav_profile"
                         android:icon="@drawable/person_icon"
