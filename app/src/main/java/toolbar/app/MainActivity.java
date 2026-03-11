@@ -1,16 +1,20 @@
 package toolbar.app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -27,10 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
+        navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -41,5 +48,26 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
 
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        // Handle navigation view item clicks here.
+        switch (item.getItemId()){
+            case R.id.nav_home:
+                break;
+            case R.id.nav_bus:
+                Intent intent = new Intent(MainActivity.this, bus.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_share:
+                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return true;
     }
 }
